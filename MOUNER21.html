@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MUNEER ABU ALIA MOTORS - سيارات رياضية، فاخرة، عائلية، كهربائية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* الألوان الأساسية */
+        :root {
+            --primary-dark: #2c3e50; /* أزرق داكن جداً للعناوين والخلفيات */
+            --secondary-gray: #34495e; /* رمادي أغمق للقوائم */
+            --accent-orange: #f39c12; /* برتقالي جذاب للأزرار والعناوين */
+            --light-bg: #ecf0f1; /* خلفية فاتحة للمحتوى */
+            --text-color: #333; /* لون النص الأساسي */
+            --card-bg: #ffffff; /* خلفية بطاقات السيارات */
+            --price-color: #e74c3c; /* لون أحمر للسعر */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            direction: rtl; /* لجعل الموقع من اليمين لليسار */
+            text-align: right; /* لمحاذاة النصوص لليمين */
+            line-height: 1.6;
+        }
+
+        /* رأس الموقع (Header) */
+        header {
+            background-color: var(--primary-dark);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            color: var(--accent-orange);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* شريط التنقل (Navigation) */
+        nav {
+            background-color: var(--secondary-gray);
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 5px;
+            margin: 0 10px; /* مسافة بين الروابط */
+        }
+        nav a:hover {
+            background-color: var(--accent-orange);
+            color: var(--primary-dark);
+        }
+
+        /* قسم البطل (Hero Section) - جديد لتحسين المظهر */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-car-bg.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-section h2 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: var(--accent-orange);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+        .hero-section p {
+            font-size: 1.5em;
+            max-width: 800px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .hero-section .hero-btn {
+            background-color: var(--accent-orange);
+            color: #fff;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .hero-section .hero-btn:hover {
+            background-color: #e67e22;
+            transform: translateY(-3px);
+        }
+
+        /* أقسام السيارات (Car Sections) */
+        .car-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .car-section h2 {
+            font-size: 3em;
+            color: var(--primary-dark);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        .car-section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 5px;
+            background-color: var(--accent-orange);
+            margin: 15px auto 0;
+            border-radius: 3px;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* بطاقة السيارة (Car Card) */
+        .car-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: right;
+        }
+        .car-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        .car-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .car-details {
+            padding: 20px;
+        }
+        .car-details h3 {
+            color: var(--primary-dark);
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .car-details p {
+            font-size: 1.05em;
+            color: #555;
+            margin-bottom: 8px;
+        }
+        .car-details .price {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--price-color);
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .car-details .features {
+            display: flex;
+            flex-wrap: wrap; /* للسماح بتوزيع الميزات على عدة أسطر */
+            justify-content: space-around;
+            align-items: center;
+            background-color: var(--light-bg);
+            padding: 10px 5px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .car-details .features span {
+            font-size: 0.9em;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 5px 10px; /* مسافة بين كل ميزة */
+        }
+        .car-details .features .icon {
+            font-size: 1.2em;
+            color: var(--accent-orange);
+        }
+
+        /* قسم التواصل (Contact Section) */
+        .contact-section {
+            background-color: var(--accent-orange);
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .contact-section h2 {
+            margin-top: 0;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+        }
+        .contact-info {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+        }
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: var(--primary-dark);
+        }
+        /* زر الاتصال */
+        .call-btn {
+            background-color: var(--primary-dark);
+            color: #fff;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .call-btn:hover {
+            background-color: #34495e;
+            transform: scale(1.05);
+        }
+
+        /* الفوتر (Footer) */
+        footer {
+            background-color: var(--primary-dark);
+            color: #fff;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 50px;
+            font-size: 0.95em;
+        }
+
+        /* التجاوب (Responsive Design) */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            nav {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            nav a {
+                margin: 5px 0;
+                width: 80%;
+                text-align: center;
+            }
+            .hero-section h2 {
+                font-size: 2.5em;
+            }
+            .hero-section p {
+                font-size: 1.1em;
+            }
+            .hero-section .hero-btn {
+                padding: 12px 30px;
+                font-size: 1.1em;
+            }
+            .car-section h2 {
+                font-size: 2.5em;
+                margin-bottom: 30px;
+            }
+            .car-grid {
+                grid-template-columns: 1fr; /* عمود واحد في الشاشات الصغيرة */
+                width: 95%;
+            }
+            .car-card {
+                width: 90%;
+                margin: 0 auto;
+            }
+            .contact-section h2 {
+                font-size: 2.2em;
+            }
+            .contact-info {
+                font-size: 1.2em;
+            }
+            .call-btn {
+                padding: 15px 30px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>MUNEER ABU ALIA MOTORS</h1>
+    </header>
+
+    <nav>
+        <a href="#sport-cars">سيارات رياضية</a>
+        <a href="#luxury-cars">سيارات فاخرة</a>
+        <a href="#family-cars">سيارات عائلية</a>
+        <a href="#electric-cars">سيارات كهربائية</a>
+        <a href="#contact">تواصل معنا</a>
+    </nav>
+
+    <section class="hero-section">
+        <h2>ابحث عن سيارة أحلامك اليوم!</h2>
+        <p>اكتشف مجموعتنا الواسعة من السيارات الرياضية، الفاخرة، العائلية، والكهربائية بأفضل الأسعار.</p>
+        <a href="#sport-cars" class="hero-btn">اكتشف مجموعتنا</a>
+    </section>
+
+    <section class="car-section" id="sport-cars">
+        <h2>سيارات رياضية</h2>
+        <div class="car-grid">
+            <div class="car-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7u6NvSodJoy78mSEdx98DoCgrjGBDL1fIHQ&s" alt="بورشه 911 كاريرا">
+                <div class="car-details">
+                    <h3>بورشه 911 كاريرا S</h3>
+                    <p><strong>الموديل:</strong> 2024</p>
+                    <p><strong>اللون:</strong> أصفر ريسينغ</p>
+                    <p><strong>المواصفات:</strong> محرك بوكسر 3.0 لتر بقوة 443 حصان، تسارع 0-100 كم/ساعة في 3.5 ثوانٍ، نظام عادم رياضي، مقاعد رياضية جلدية.</p>
+                    <div class="features">
+                        <span><i class="icon">🏎️</i> رياضي</span>
+                        <span><i class="icon">⚙️</i> أوتوماتيك</span>
+                        <span><i class="icon">⚡</i> 443 حصان</span>
+                    </div>
+                    <p class="price">السعر: 180,000 دينار</p>
+                </div>
+            </div>
+            <div class="car-card">
+                <img src="https://wheelz.me/wp-content/uploads/2019/07/2020CorvetteSingrayReveal007.jpg" alt="شيفروليه كورفيت">
+                <div class="car-details">
+                    <h3>شيفروليه كورفيت C8 ستينغراي</h3>
+                    <p><strong>الموديل:</strong> 2023</p>
+                    <p><strong>اللون:</strong> أحمر رالي</p>
+                    <p><strong>المواصفات:</strong> محرك V8 وسطي 6.2 لتر بقوة 490 حصان، تسارع 0-100 كم/ساعة في 3.0 ثوانٍ، سقف قابل للإزالة، شاشة لمس معلوماتية.</p>
+                    <div class="features">
+                        <span><i class="icon">🏁</i> تصميم جريء</span>
+                        <span><i class="icon">⛽</i> بنزين</span>
+                        <span><i class="icon">💨</i> أداء مذهل</span>
+                    </div>
+                    <p class="price">السعر: 120,000 دينار</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="car-section" id="luxury-cars">
+        <h2>سيارات فاخرة</h2>
+        <div class="car-grid">
+            <div class="car-card">
+                <img src="https://vehicle-images.dealerinspire.com/9bd1-110012062/W1K6G6DB5RA289135/55f8195dabdde2af9a3173c345bde4ea.jpg" alt="مرسيدس بنز S-Class">
+                <div class="car-details">
+                    <h3>مرسيدس بنز S 500</h3>
+                    <p><strong>الموديل:</strong> 2024</p>
+                    <p><strong>اللون:</strong> أسود أوبسيديان ميتاليك</p>
+                    <p><strong>المواصفات:</strong> مقصورة داخلية فاخرة بجلود النابا، شاشات OLED متعددة، نظام صوت Burmester ثلاثي الأبعاد، قيادة شبه ذاتية متقدمة.</p>
+                    <div class="features">
+                        <span><i class="icon">💎</i> فخامة</span>
+                        <span><i class="icon">🛋️</i> مقاعد جلد</span>
+                        <span><i class="icon">🔊</i> نظام صوتي ممتاز</span>
+                    </div>
+                    <p class="price">السعر: 250,000 دينار</p>
+                </div>
+            </div>
+            <div class="car-card">
+    <img src="data:image/jpeg;base64,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">
+    <div class="car-details">
+        <h3>بي إم دبليو 750Li</h3>
+        <p><strong>الموديل:</strong> 2023</p>
+        <p><strong>اللون:</strong> رمادي برنا بلس</p>
+        <p><strong>المواصفات:</strong> محرك V8 توين تيربو، نظام تعليق هوائي متكيف، تدليك للمقاعد، نظام ترفيه خلفي بشاشات عالية الدقة.</p>
+        <div class="features">
+            <span><i class="icon">👑</i> راحة مطلقة</span>
+            <span><i class="icon">🛣️</i> قيادة سلسة</span>
+            <span><i class="icon">📱</i> تقنيات حديثة</span>
+        </div>
+        <p class="price">السعر: 210,000 دينار</p>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <section class="car-section" id="family-cars">
+        <h2>سيارات عائلية</h2>
+        <div class="car-grid">
+            <div class="car-card">
+                <img src="https://cdn.al-ain.com/lg/images/2024/8/25/195-213155-2024-toyota-highlander-review-4.png" alt="تويوتا هايلاندر">
+                <div class="car-details">
+                    <h3>تويوتا هايلاندر هايبرد</h3>
+                    <p><strong>الموديل:</strong> 2024</p>
+                    <p><strong>اللون:</strong> أبيض لؤلؤي</p>
+                    <p><strong>المواصفات:</strong> 7 مقاعد واسعة، نظام هايبرد موفر للوقود، نظام أمان Toyota Safety Sense 2.5+، مساحة تخزين كبيرة.</p>
+                    <div class="features">
+                        <span><i class="icon">👨‍👩‍👧‍👦</i> 7 مقاعد</span>
+                        <span><i class="icon">🌿</i> هايبرد</span>
+                        <span><i class="icon">🛡️</i> أمان عالي</span>
+                    </div>
+                    <p class="price">السعر: 65,000 دينار</p>
+                </div>
+            </div>
+            <div class="car-card">
+                <img src="https://jo.motory.com/tinymce/2023_honda_cr_v_hybrid_awd_touring_414_edit_1665754236_1680096206.jpg" alt="هوندا CR-V">
+                <div class="car-details">
+                    <h3>هوندا CR-V</h3>
+                    <p><strong>الموديل:</strong> 2023</p>
+                    <p><strong>اللون:</strong> أزرق معدني</p>
+                    <p><strong>المواصفات:</strong> مقصورة عملية وواسعة، استهلاك وقود ممتاز، نظام Honda Sensing للسلامة النشطة، شاشة معلومات 7 بوصة.</p>
+                    <div class="features">
+                        <span><i class="icon">👶</i> مساحة مريحة</span>
+                        <span><i class="icon">⛽</i> اقتصادي</span>
+                        <span><i class="icon">🔄</i> دفع رباعي</span>
+                    </div>
+                    <p class="price">السعر: 20,000 دينار</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="car-section" id="electric-cars">
+        <h2>سيارات كهربائية</h2>
+        <div class="car-grid">
+            <div class="car-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ0_EPslf7QvG06V4uOb84MjsiK6vcL1PdRw&s" alt="تسلا موديل 3">
+                <div class="car-details">
+                    <h3>تسلا موديل 3 لونج رينج</h3>
+                    <p><strong>الموديل:</strong> 2024</p>
+                    <p><strong>اللون:</strong> أبيض لؤلؤي متعدد الطبقات</p>
+                    <p><strong>المواصفات:</strong> مدى يصل إلى 600 كم، تسارع فائق، تحديثات برمجية عبر الهواء، نظام أوتو بايلوت، شاشة مركزية كبيرة.</p>
+                    <div class="features">
+                        <span><i class="icon">🔋</i> كهربائية بالكامل</span>
+                        <span><i class="icon">🌐</i> تقنية متقدمة</span>
+                        <span><i class="icon">🚀</i> تسارع قوي</span>
+                    </div>
+                    <p class="price">السعر: 75,000 دينار</p>
+                </div>
+            </div>
+            <div class="car-card">
+                <img src="https://businessline-eg.com/wp-content/uploads/2023/04/hyundai-ioniq1.jpg" alt="هيونداي أيونيك 5">
+                <div class="car-details">
+                    <h3>هيونداي أيونيك 5</h3>
+                    <p><strong>الموديل:</strong> 2023</p>
+                    <p><strong>اللون:</strong> رمادي فضائي مطفي</p>
+                    <p><strong>المواصفات:</strong> تصميم مستقبلي، شحن فائق السرعة، مقصورة واسعة ومبتكرة، مدى يصل إلى 480 كم، تقنية V2L.</p>
+                    <div class="features">
+                        <span><i class="icon">✨</i> تصميم فريد</span>
+                        <span><i class="icon">🔌</i> شحن سريع</span>
+                        <span><i class="icon">🌿</i> صديقة للبيئة</span>
+                    </div>
+                    <p class="price">السعر: 60,000 دينار</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2>تواصل معنا</h2>
+        <div class="contact-info">
+            <p><strong>رقم الهاتف:</strong> <a href="tel:0785282675">0785282675</a></p>
+            <p><strong>البريد الإلكتروني:</strong> <a href="mailto:mounerabualia7@gmail.com">mounerabualia7@gmail.com</a></p>
+        </div>
+        <button class="call-btn" onclick="callNumber()">اتصل الآن</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MUNEER ABU ALIA MOTORS. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // وظيفة الاتصال
+        function callNumber() {
+            // هنا يمكنك إضافة منطق الاتصال الفعلي، مثلاً:
+            // window.location.href = 'tel:0785282675';
+            alert('سوف يتم الاتصال على الرقم: 0785282675');
+        }
+
+        // لجعل الانتقال سلساً عند النقر على الروابط في شريط التنقل
+        document.querySelectorAll('nav a[href^="#"], .hero-btn[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // منع السلوك الافتراضي للرابط
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth' // انتقال سلس
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
